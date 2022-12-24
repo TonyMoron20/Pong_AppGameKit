@@ -11,11 +11,23 @@
 #define FULLSCREEN false
 
 // used to make a more unique folder for the write path
-#define COMPANY_NAME "My Company"
+#define COMPANY_NAME "TonyMoron20"
+
+//Enum para hacer referencia a las diferentes pantallas que tendra el juego
+enum class gamescreen{startScreen, gameScreen, resultScreen};
 
 // Global values for the app
 class app
 {
+	private:
+		//variable tipo gamescreen
+		gamescreen screen;
+
+		//Funciones para cada pantalla del juego
+		void updateStartScreen();
+		void updateGameScreen();
+		void updateResultScreen();
+
 	public:
 
 		// constructor
