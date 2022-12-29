@@ -6,7 +6,10 @@ app App;
 void app::Begin(void)
 {
 	agk::SetVirtualResolution (1024, 768);
-	agk::SetClearColor( 151,170,204 ); // light blue
+
+	//Cambia el color de fondo de la pantalla de ejecución a negro
+	agk::SetClearColor( 26, 26, 26 );
+
 	agk::SetSyncRate(60,0);
 	agk::SetScissor(0,0,0,0);
 	agk::SetWindowAllowResize(0);
@@ -14,6 +17,10 @@ void app::Begin(void)
 
 	//Inicialización de variable screen
 	screen = gamescreen::gameScreen;
+
+	//Se carga y se posiciona la imagen de la red
+	const unsigned int net = agk::LoadSprite("media/net.png");
+	agk::SetSpritePositionByOffset(net, agk::GetVirtualWidth()/2.0f, agk::GetVirtualHeight()/2.0f );
 }
 
 int app::Loop (void)
