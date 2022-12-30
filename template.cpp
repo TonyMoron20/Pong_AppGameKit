@@ -1,5 +1,6 @@
 // Includes
 #include "template.h"
+#include "Paddle.h"
 
 app App;
 
@@ -21,6 +22,21 @@ void app::Begin(void)
 	//Se carga y se posiciona la imagen de la red
 	const unsigned int net = agk::LoadSprite("media/net.png");
 	agk::SetSpritePositionByOffset(net, agk::GetVirtualWidth()/2.0f, agk::GetVirtualHeight()/2.0f );
+
+	//Se carga la imagen que tendran las paletas
+	unsigned int paddleImage = agk::LoadImage("media/paddle.png");
+
+	//Variable que contiene la distancia que habra entre el borde de la pantalla y la paleta
+	const static float distanceFromEdge = 20.0f + (agk::GetImageWidth(paddleImage)/2.0f);
+
+	//Se crean las variables para las coordenadas en X de cada paleta
+	const float playerX = distanceFromEdge;
+	const float aiX = agk::GetVirtualWidth() - distanceFromEdge;
+
+	//Se crean los objetos de tipo Paddle
+	playerPaddle = new Paddle(paddleImage, playerX);
+	aiPaddle = new Paddle(paddleImage, aiX);
+
 }
 
 int app::Loop (void)
@@ -61,6 +77,16 @@ void app::updateGameScreen()
 	if (agk::GetRawKeyPressed(AGK_KEY_SPACE))
 	{
 		screen = gamescreen::resultScreen;
+	}
+
+	//Control del jugador
+	if (agk::GetRawKeyState(AGK_KEY_UP) || agk::GetRawKeyState(AGK_KEY_W))
+	{
+		playerPaddle->moveUp();
+	}
+	if (agk::GetRawKeyState(AGK_KEY_DOWN) || agk::GetRawKeyState(AGK_KEY_S))
+	{
+		playerPaddle->moveDown();
 	}
 }
 

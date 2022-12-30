@@ -11,3 +11,11 @@ Devolvera un valor igual a 1 si la tecla indicada es presionada, el valor es dev
 ### agk::SetClearColor()
 Esta función se encarga de cambiar el color de fondo de la pantalla de ejecución, el color mostrado se pasa a traves de valores rgb.
 
+### agk::CreateSprite()
+Con esta función se crea un sprite a partir de una image ID que contenga la imagen a usar.
+
+### agk::LoadImage()
+Carga una imagen a partir de la ruta que se le pase, y la guarda en una image ID.
+
+### agk::GetImageWidth()
+Devuelve el ancho total de la imagen indicada.

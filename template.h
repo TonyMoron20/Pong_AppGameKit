@@ -28,6 +28,10 @@ class app
 		void updateGameScreen();
 		void updateResultScreen();
 
+		//Objetos del tipo Paddle
+		class Paddle* playerPaddle;
+		class Paddle* aiPaddle;
+
 	public:
 
 		// constructor
