@@ -123,11 +123,13 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Ball.cpp" />
     <ClCompile Include="Core.cpp" />
     <ClCompile Include="Paddle.cpp" />
     <ClCompile Include="template.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Ball.h" />
     <ClInclude Include="Paddle.h" />
     <ClInclude Include="template.h" />
   </ItemGroup>

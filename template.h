@@ -32,6 +32,9 @@ class app
 		class Paddle* playerPaddle;
 		class Paddle* aiPaddle;
 
+		//Objeto de tipo Ball
+		class Ball* ball;
+
 	public:
 
 		// constructor

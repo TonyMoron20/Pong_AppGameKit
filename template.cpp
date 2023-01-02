@@ -1,6 +1,7 @@
 // Includes
 #include "template.h"
 #include "Paddle.h"
+#include "Ball.h"
 
 app App;
 
@@ -36,6 +37,9 @@ void app::Begin(void)
 	//Se crean los objetos de tipo Paddle
 	playerPaddle = new Paddle(paddleImage, playerX);
 	aiPaddle = new Paddle(paddleImage, aiX);
+
+	//Se crea el objeto de tipo Ball
+	ball = new Ball();
 
 }
 
@@ -88,6 +92,9 @@ void app::updateGameScreen()
 	{
 		playerPaddle->moveDown();
 	}
+
+	//Movimiento de la pelota
+	ball->update();
 }
 
 //Función para la pantalla de resultados

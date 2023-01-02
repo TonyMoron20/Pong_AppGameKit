@@ -8,7 +8,7 @@ class Paddle
 		//Variable para guardar la imagen del sprite
 		unsigned int sprite;
 
-		//Corrdenadas para posicionar a las paletas dentro de la ventana de juego
+		//Coordenadas para posicionar a las paletas dentro de la ventana de juego
 		float x, y;
 
 		//Funcion para el movimiento de las paletas
