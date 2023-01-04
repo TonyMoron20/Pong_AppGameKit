@@ -58,3 +58,9 @@ void Paddle::reset()
 	y = agk::GetVirtualHeight() / 2.0f;
 	agk::SetSpritePositionByOffset(sprite, x, y);
 }
+
+bool Paddle::isCollidingWithSprite(unsigned int otherSprite) const
+{
+	//Devolvera un valor "true" si el valor devuelto por la función "GetSpriteCollision()" es igual a 1
+	return 1 == agk::GetSpriteCollision(sprite, otherSprite);
+}

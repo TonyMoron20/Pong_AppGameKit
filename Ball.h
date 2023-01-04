@@ -1,4 +1,7 @@
 #pragma once
+
+class Paddle;
+
 class Ball
 {
 	private:
@@ -11,9 +14,15 @@ class Ball
 		//Variables para el movimiento de la pelota
 		float x, y, velX, velY;
 
+		//Arreglo de tipo Paddle para guardar la referencia a las dos paletas
+		Paddle* paddles[2];
+
+		//Variable bool para guardar el estado de colisión entre pelota y paletas
+		bool collidingWithPaddle;
+
 	public:
 		//Constructor de la clase
-		Ball();
+		Ball(Paddle* leftPaddle, Paddle* rightPaddle);
 
 		//Función para actualizar el movimiento de la pelota
 		void update();

@@ -1,9 +1,10 @@
 #include "Ball.h"
 #include "agk.h"
+#include "Paddle.h"
 
 const float Ball::moveSpeed = 600.0f;
 
-Ball::Ball()
+Ball::Ball(Paddle* leftPaddle, Paddle* rightPaddle)
 {
 	//Se indica la ruta donde esta la imagen que usara la pelota
 	sprite = agk::LoadSprite("media/ball.png");
@@ -22,6 +23,13 @@ Ball::Ball()
 	const float length = agk::Sqrt((velX * velX) + (velY * velY));
 	velX = (velX / length) * moveSpeed;
 	velY = (velY / length) * moveSpeed;
+
+	//Se guardan las paletas indicadas como parametro en el arreglo
+	paddles[0] = leftPaddle;
+	paddles[1] = rightPaddle;
+
+	//La collisión al principio sera falsa
+	collidingWithPaddle = false;
 }
 
 void Ball::update()
@@ -32,6 +40,36 @@ void Ball::update()
 	//Se actualizan las variables para posicionar a la pelota
 	x += velX * frameTime;
 	y += velY * frameTime;
+
+	//Variables para saber cual es la posición máxima y mínima que puede tener la pelota en el eje Y
+	const float minY = agk::GetSpriteHeight(sprite);
+	const float maxY = agk::GetVirtualHeight() - minY;
+
+	//Se revisa si la posición en Y no pasa el valor minimo o maximo, en caso de pasarlo se cambia el signo de la velocidad para alterar la dirección
+	if (y < minY)
+	{
+		y = minY;
+		velY = -velY;
+	}
+	else if (y > maxY)
+	{
+		y = maxY;
+		velY = -velY;
+	}
+
+	//Revisa si hay alguna colisión con alguna de las dos paletas, en caso de haber una colisión cambiara la dirección en el eje X
+	if (paddles[0]->isCollidingWithSprite(sprite) || paddles[1]->isCollidingWithSprite(sprite))
+	{
+		if (!collidingWithPaddle)
+		{
+			velX = -velX;
+			collidingWithPaddle = true;
+		}
+	}
+	else
+	{
+		collidingWithPaddle = false;
+	}
 
 	//Se actualiza la posición de la pantalla
 	agk::SetSpritePositionByOffset(sprite, x, y);

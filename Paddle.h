@@ -22,5 +22,8 @@ class Paddle
 		void moveUp();
 		void moveDown();
 		void reset();
+
+		//Función para saber si la pelota tiene una colisión con la pelota
+		bool isCollidingWithSprite(unsigned int otherSprite) const;
 };
 

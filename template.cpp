@@ -39,7 +39,7 @@ void app::Begin(void)
 	aiPaddle = new Paddle(paddleImage, aiX);
 
 	//Se crea el objeto de tipo Ball
-	ball = new Ball();
+	ball = new Ball(playerPaddle, aiPaddle);
 
 }
 

@@ -19,3 +19,12 @@ Carga una imagen a partir de la ruta que se le pase, y la guarda en una image ID
 
 ### agk::GetImageWidth()
 Devuelve el ancho total de la imagen indicada.
+
+### agk::RandomSing()
+Le da un signo positivo o negativo de manera aleatoria al valor indicado.
+
+### agk::Random()
+Devuelve un número de forma aleatoria que se encuentre entre los dos números que se indiquen en el parentesis.
+
+### agk::GetSpriteCollision()
+Devuelve el valor de 1 si los dos sprites que se indiquen dentro del parentesis tienen una colisión, en caso contrario devuelve 0.
