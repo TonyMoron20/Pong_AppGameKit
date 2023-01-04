@@ -20,6 +20,9 @@ class Ball
 		//Variable bool para guardar el estado de colisión entre pelota y paletas
 		bool collidingWithPaddle;
 
+		//Variable para guardar el sonido de rebote
+		unsigned int bounceSound;
+
 	public:
 		//Constructor de la clase
 		Ball(Paddle* leftPaddle, Paddle* rightPaddle);

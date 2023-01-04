@@ -28,3 +28,9 @@ Devuelve un número de forma aleatoria que se encuentre entre los dos números que
 
 ### agk::GetSpriteCollision()
 Devuelve el valor de 1 si los dos sprites que se indiquen dentro del parentesis tienen una colisión, en caso contrario devuelve 0.
+
+### agk::LoadSoundOGG()
+Carga un archivo de sonido de tipo ".ogg" oara poder usarlo dentro de la aplicación.
+
+### agk::PlaySound()
+Reproduce el sonido que se indique en los parentesis.

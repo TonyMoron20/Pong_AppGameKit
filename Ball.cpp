@@ -30,6 +30,9 @@ Ball::Ball(Paddle* leftPaddle, Paddle* rightPaddle)
 
 	//La collisión al principio sera falsa
 	collidingWithPaddle = false;
+
+	//Se indica el sonido que se guardara
+	bounceSound = agk::LoadSoundOGG("media/bounce.ogg");
 }
 
 void Ball::update()
@@ -50,11 +53,13 @@ void Ball::update()
 	{
 		y = minY;
 		velY = -velY;
+		agk::PlaySound(bounceSound);
 	}
 	else if (y > maxY)
 	{
 		y = maxY;
 		velY = -velY;
+		agk::PlaySound(bounceSound);
 	}
 
 	//Revisa si hay alguna colisión con alguna de las dos paletas, en caso de haber una colisión cambiara la dirección en el eje X
@@ -64,6 +69,7 @@ void Ball::update()
 		{
 			velX = -velX;
 			collidingWithPaddle = true;
+			agk::PlaySound(bounceSound);
 		}
 	}
 	else
