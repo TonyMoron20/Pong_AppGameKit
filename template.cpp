@@ -110,6 +110,18 @@ void app::updateGameScreen()
 		aiPaddle->moveDown();
 	}
 
+	//Sistema de puntos
+	if (ball->getX() < 0.0f)
+	{
+		aiScore->addPoint();
+		ball->reset();
+	}
+	if (ball->getX() > agk::GetVirtualWidth())
+	{
+		playerScore->addPoint();
+		ball->reset();
+	}
+
 	//Movimiento de la pelota
 	ball->update();
 }

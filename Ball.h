@@ -32,5 +32,11 @@ class Ball
 
 		//Función para obtener la posición en Y actual
 		float getY() const;
+
+		//Función para obtener la posición en X actual
+		float getX() const;
+
+		//Función para reiniciar los atributos de la pelota
+		void reset();
 };
 

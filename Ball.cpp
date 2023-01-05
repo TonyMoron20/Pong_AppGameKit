@@ -9,20 +9,8 @@ Ball::Ball(Paddle* leftPaddle, Paddle* rightPaddle)
 	//Se indica la ruta donde esta la imagen que usara la pelota
 	sprite = agk::LoadSprite("media/ball.png");
 
-	//Se da valor a las coordenadas iniciales de la pelota, ademas de posicionarla
-	x = agk::GetVirtualWidth() / 2.0f;
-	y = agk::GetVirtualHeight() / 2.0f;
-	agk::SetSpritePositionByOffset(sprite, x, y);
-
-	/*Variables que se usaran para darle dirección al sprite
-	Se hace una conversión implicita con "static_cast" ya que las funciones "Random" devuelven valores enteros*/
-	velX = static_cast<float>(agk::RandomSign(agk::Random(40, 100))) / 100.0f;
-	velY = static_cast<float>(agk::RandomSign(agk::Random(0, 100))) / 100.0f;
-
-	//Variables para calcular el vector final que dara la velocidad y dirección a la pelota
-	const float length = agk::Sqrt((velX * velX) + (velY * velY));
-	velX = (velX / length) * moveSpeed;
-	velY = (velY / length) * moveSpeed;
+	//Se llama a la función reset
+	reset();
 
 	//Se guardan las paletas indicadas como parametro en el arreglo
 	paddles[0] = leftPaddle;
@@ -84,4 +72,27 @@ void Ball::update()
 float Ball::getY() const
 {
 	return agk::GetSpriteYByOffset(sprite);
+}
+
+float Ball::getX() const
+{
+	return agk::GetSpriteXByOffset(sprite);
+}
+
+void Ball::reset()
+{
+	//Se da valor a las coordenadas iniciales de la pelota, ademas de posicionarla
+	x = agk::GetVirtualWidth() / 2.0f;
+	y = agk::GetVirtualHeight() / 2.0f;
+	agk::SetSpritePositionByOffset(sprite, x, y);
+
+	/*Variables que se usaran para darle dirección al sprite
+	Se hace una conversión implicita con "static_cast" ya que las funciones "Random" devuelven valores enteros*/
+	velX = static_cast<float>(agk::RandomSign(agk::Random(40, 100))) / 100.0f;
+	velY = static_cast<float>(agk::RandomSign(agk::Random(0, 100))) / 100.0f;
+
+	//Variables para calcular el vector final que dara la velocidad y dirección a la pelota
+	const float length = agk::Sqrt((velX * velX) + (velY * velY));
+	velX = (velX / length) * moveSpeed;
+	velY = (velY / length) * moveSpeed;
 }
