@@ -64,3 +64,6 @@ Elimina de la memoria la cadena que se le indique.
 
 ### agk::LoadFont()
 Carga desde una ruta una fuente para texto y la guarda como un font ID.
+
+### agk::SetTextVisible()
+Con esta función se indica si el texto sera visible o no en la pantalla, 0 = invisible, 1 = visible.

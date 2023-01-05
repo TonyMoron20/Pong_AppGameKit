@@ -39,6 +39,10 @@ class app
 		class Score* playerScore;
 		class Score* aiScore;
 
+		//variables para mostrar texto en las pantallas
+		unsigned int resultText;
+		unsigned int nextScreenText;
+
 	public:
 
 		// constructor

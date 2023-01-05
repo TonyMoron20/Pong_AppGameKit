@@ -19,7 +19,7 @@ void app::Begin(void)
 	agk::SetWindowTitle("Pong");
 
 	//Inicialización de variable screen
-	screen = gamescreen::gameScreen;
+	screen = gamescreen::startScreen;
 
 	//Se carga y se posiciona la imagen de la red
 	const unsigned int net = agk::LoadSprite("media/net.png");
@@ -48,6 +48,21 @@ void app::Begin(void)
 	//Se crean los objetos de tipo Score
 	playerScore = new Score(font, agk::GetVirtualWidth() * 0.2f);
 	aiScore = new Score(font, agk::GetVirtualWidth() * 0.8f);
+
+	//Se crea el texto que mostrara el mensaje de resultado
+	resultText = agk::CreateText("");
+	agk::SetTextAlignment(resultText, 1);
+	agk::SetTextFont(resultText, font);
+	agk::SetTextSize(resultText, 30.0f);
+	agk::SetTextPosition(resultText, agk::GetVirtualWidth() / 2.0f, agk::GetVirtualHeight() * 0.3f);
+	agk::SetTextVisible(resultText, 0);
+
+	//Se crea el texto que mostrara las instrucciones para cambiar de pantalla
+	nextScreenText = agk::CreateText("Presiona espacio para iniciar");
+	agk::SetTextAlignment(nextScreenText, 1);
+	agk::SetTextFont(nextScreenText, font);
+	agk::SetTextSize(nextScreenText, 20.0f);
+	agk::SetTextPosition(nextScreenText, agk::GetVirtualWidth() / 2.0f, agk::GetVirtualHeight() * 0.5f);
 }
 
 int app::Loop (void)
@@ -74,22 +89,16 @@ int app::Loop (void)
 //Función para la pantalla de inicio
 void app::updateStartScreen()
 {
-	agk::Print("Pantalla de inicio");
 	if (agk::GetRawKeyPressed(AGK_KEY_SPACE))
 	{
 		screen = gamescreen::gameScreen;
+		agk::SetTextVisible(nextScreenText, 0);
 	}
 }
 
 //Función para la pantalla de juego
 void app::updateGameScreen()
 {
-	agk::Print("Pantalla de juego");
-	if (agk::GetRawKeyPressed(AGK_KEY_SPACE))
-	{
-		screen = gamescreen::resultScreen;
-	}
-
 	//Control del jugador
 	if (agk::GetRawKeyState(AGK_KEY_UP) || agk::GetRawKeyState(AGK_KEY_W))
 	{
@@ -111,15 +120,35 @@ void app::updateGameScreen()
 	}
 
 	//Sistema de puntos
+	bool gameOver = false;
 	if (ball->getX() < 0.0f)
 	{
 		aiScore->addPoint();
 		ball->reset();
+		if (aiScore->hasWinningScore())
+		{
+			agk::SetTextString(resultText, "¡La IA gano!");
+			gameOver = true;
+		}
 	}
 	if (ball->getX() > agk::GetVirtualWidth())
 	{
 		playerScore->addPoint();
 		ball->reset();
+		if (playerScore->hasWinningScore())
+		{
+			agk::SetTextString(resultText, "¡El jugador gano!");
+			gameOver = true;
+		}
+	}
+
+	//En caso de que alguno de los jugadores llegue al marcador ganador el juego cambiara a la pantalla de resultados
+	if (gameOver)
+	{
+		agk::SetTextString(nextScreenText, "Presiona espacio para continuar");
+		agk::SetTextVisible(resultText, 1);
+		agk::SetTextVisible(nextScreenText, 1);
+		screen = gamescreen::resultScreen;
 	}
 
 	//Movimiento de la pelota
@@ -129,10 +158,15 @@ void app::updateGameScreen()
 //Función para la pantalla de resultados
 void app::updateResultScreen()
 {
-	agk::Print("Pantalla de resultados");
 	if (agk::GetRawKeyPressed(AGK_KEY_SPACE))
 	{
 		screen = gamescreen::startScreen;
+		playerScore->resetScore();
+		aiScore->resetScore();
+		playerPaddle->reset();
+		aiPaddle->reset();
+		agk::SetTextString(nextScreenText, "Presiona espacio para iniciar");
+		agk::SetTextVisible(resultText, 0);
 	}
 }
 
