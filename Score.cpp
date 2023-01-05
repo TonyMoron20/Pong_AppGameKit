@@ -23,11 +23,15 @@ Score::Score(unsigned int font, float x)
 
 	//Se inicializa la variable que llevara el conteo de puntos
 	score = 0;
+
+	//Se indica el sonido que se guardara
+	point = agk::LoadSoundOGG("media/point.ogg");
 }
 
 void Score::addPoint()
 {
 	score += 1;
+	agk::PlaySound(point);
 	updateText();
 }
 

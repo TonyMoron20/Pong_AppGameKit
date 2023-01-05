@@ -63,6 +63,10 @@ void app::Begin(void)
 	agk::SetTextFont(nextScreenText, font);
 	agk::SetTextSize(nextScreenText, 20.0f);
 	agk::SetTextPosition(nextScreenText, agk::GetVirtualWidth() / 2.0f, agk::GetVirtualHeight() * 0.5f);
+
+	//Se cargan los sonidos de victoria y derrota
+	winSound = agk::LoadSoundOGG("media/win.ogg");
+	gameOverSound = agk::LoadSoundOGG("media/gameOver.ogg");
 }
 
 int app::Loop (void)
@@ -128,6 +132,7 @@ void app::updateGameScreen()
 		if (aiScore->hasWinningScore())
 		{
 			agk::SetTextString(resultText, "¡La IA gano!");
+			agk::PlaySound(gameOverSound);
 			gameOver = true;
 		}
 	}
@@ -138,6 +143,7 @@ void app::updateGameScreen()
 		if (playerScore->hasWinningScore())
 		{
 			agk::SetTextString(resultText, "¡El jugador gano!");
+			agk::PlaySound(winSound);
 			gameOver = true;
 		}
 	}

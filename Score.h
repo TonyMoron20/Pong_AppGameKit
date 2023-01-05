@@ -14,6 +14,9 @@ class Score
 		//Actualizara el texto que se muestra en pantalla
 		void updateText();
 
+		//Variable para guardar el sonido de punto
+		unsigned int point;
+
 	public:
 		//Constructor
 		Score(unsigned int font, float x);

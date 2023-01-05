@@ -43,6 +43,10 @@ class app
 		unsigned int resultText;
 		unsigned int nextScreenText;
 
+		//Variables para sonidos de victoria y derrota
+		unsigned int winSound;
+		unsigned int gameOverSound;
+
 	public:
 
 		// constructor
