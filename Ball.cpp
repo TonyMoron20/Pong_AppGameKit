@@ -80,3 +80,8 @@ void Ball::update()
 	//Se actualiza la posición de la pantalla
 	agk::SetSpritePositionByOffset(sprite, x, y);
 }
+
+float Ball::getY() const
+{
+	return agk::GetSpriteYByOffset(sprite);
+}

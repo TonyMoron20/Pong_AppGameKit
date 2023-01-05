@@ -93,6 +93,16 @@ void app::updateGameScreen()
 		playerPaddle->moveDown();
 	}
 
+	//Control de la IA
+	if (ball->getY() < aiPaddle->getY())
+	{
+		aiPaddle->moveUp();
+	}
+	if (ball->getY() > aiPaddle->getY())
+	{
+		aiPaddle->moveDown();
+	}
+
 	//Movimiento de la pelota
 	ball->update();
 }

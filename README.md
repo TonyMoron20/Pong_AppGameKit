@@ -34,3 +34,6 @@ Carga un archivo de sonido de tipo ".ogg" oara poder usarlo dentro de la aplicac
 
 ### agk::PlaySound()
 Reproduce el sonido que se indique en los parentesis.
+
+### agk::GetSpriteYByOffset()
+Obtiene la posición en Y del sprite indicado, el punto de origen se toma desde el centro del sprite.

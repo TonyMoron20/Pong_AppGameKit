@@ -29,5 +29,8 @@ class Ball
 
 		//Función para actualizar el movimiento de la pelota
 		void update();
+
+		//Función para obtener la posición en Y actual
+		float getY() const;
 };
 

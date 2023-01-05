@@ -25,5 +25,8 @@ class Paddle
 
 		//Función para saber si la pelota tiene una colisión con la pelota
 		bool isCollidingWithSprite(unsigned int otherSprite) const;
+
+		//Función para obtener la posición en Y actual
+		float getY() const;
 };
 
