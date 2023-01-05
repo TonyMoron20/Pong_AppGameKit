@@ -37,3 +37,30 @@ Reproduce el sonido que se indique en los parentesis.
 
 ### agk::GetSpriteYByOffset()
 Obtiene la posición en Y del sprite indicado, el punto de origen se toma desde el centro del sprite.
+
+### agk::CreateText()
+Crea un objeto de tipo texto, y este mostrara en pantalla el texto que se le pase como cadena en el parentesis.
+
+### agk::SetTextAlignment()
+Alinea el texto segun se le indique, siendo 0 = izquierda, 1 = centrado, 2 = derecha.
+
+### agk::SetTextFont()
+Hace que la fuente que use el texto sea cambiada por la que se indique.
+
+### agk::SetTextSize()
+Establece el tamaño con el que se mostrara el texto.
+
+### agk::SetTextPosition()
+Establece la posición en la que se mostrara el texto.
+
+### agk::Str()
+Convierte datos de tipo numerico a tipo string.
+
+### agk::SetTextString()
+Actualiza el texto del objeto de tipo texto.
+
+### agk::DeleteString()
+Elimina de la memoria la cadena que se le indique.
+
+### agk::LoadFont()
+Carga desde una ruta una fuente para texto y la guarda como un font ID.

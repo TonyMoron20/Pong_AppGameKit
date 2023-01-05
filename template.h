@@ -32,8 +32,12 @@ class app
 		class Paddle* playerPaddle;
 		class Paddle* aiPaddle;
 
-		//Objeto de tipo Ball
+		//Objeto del tipo Ball
 		class Ball* ball;
+
+		//Objetos del tipo Score
+		class Score* playerScore;
+		class Score* aiScore;
 
 	public:
 

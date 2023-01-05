@@ -2,6 +2,7 @@
 #include "template.h"
 #include "Paddle.h"
 #include "Ball.h"
+#include "Score.h"
 
 app App;
 
@@ -41,6 +42,12 @@ void app::Begin(void)
 	//Se crea el objeto de tipo Ball
 	ball = new Ball(playerPaddle, aiPaddle);
 
+	//Se carga la fuente que usaran los scores
+	unsigned int font = agk::LoadFont("media/kongtext.ttf");
+
+	//Se crean los objetos de tipo Score
+	playerScore = new Score(font, agk::GetVirtualWidth() * 0.2f);
+	aiScore = new Score(font, agk::GetVirtualWidth() * 0.8f);
 }
 
 int app::Loop (void)
